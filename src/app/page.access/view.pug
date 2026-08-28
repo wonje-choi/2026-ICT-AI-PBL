@@ -1,36 +1,257 @@
-div(class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8")
-    div(class="sm:mx-auto sm:w-full sm:max-w-sm")
-        div(class="flex justify-center")
-            div(class="flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-600 text-white")
-                svg(xmlns="http://www.w3.org/2000/svg", fill="none", viewBox="0 0 24 24", stroke-width="1.5", stroke="currentColor", class="size-7")
-                    path(stroke-linecap="round", stroke-linejoin="round", d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9")
-        h2(class="mt-6 text-center text-xl font-bold text-gray-900") 서비스 로그인
-        p(class="mt-2 text-center text-[13px] text-gray-500") 계정 정보를 입력하여 로그인하세요.
-
-    div(class="mt-8 sm:mx-auto sm:w-full sm:max-w-sm")
-        div(class="space-y-5")
+main(class="auth-shell")
+    section(class="story-panel")
+        div(class="story-orb story-orb-one")
+        div(class="story-orb story-orb-two")
+        header(class="brand-lockup")
+            div(class="brand-mark")
+                svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 32 32", fill="none", aria-hidden="true")
+                    path(d="M8.5 6.5h10.25a4.75 4.75 0 0 1 4.75 4.75v14.25H13.25A4.75 4.75 0 0 1 8.5 20.75V6.5Z", stroke="currentColor", stroke-width="2")
+                    path(d="M13 10.5h6M13 14.5h6M13 18.5h3.5", stroke="currentColor", stroke-width="2", stroke-linecap="round")
+                    path(d="m21.5 4.75.65 1.72a3.1 3.1 0 0 0 1.82 1.82l1.78.67-1.78.67a3.1 3.1 0 0 0-1.82 1.82l-.65 1.72-.66-1.72a3.1 3.1 0 0 0-1.82-1.82l-1.77-.67 1.77-.67a3.1 3.1 0 0 0 1.82-1.82l.66-1.72Z", fill="currentColor", stroke="none")
             div
-                label(class="block text-[13px] font-medium text-gray-700 mb-1") 이메일
-                input(
-                    type="email",
-                    autocomplete="email",
-                    [(ngModel)]="data.email",
-                    placeholder="name@example.com",
-                    class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none")
+                strong 논문변환기
+                span Paper to Video AI
 
-            div
-                label(class="block text-[13px] font-medium text-gray-700 mb-1") 비밀번호
-                input(
-                    type="password",
-                    autocomplete="current-password",
-                    [(ngModel)]="data.password",
-                    (keyup.enter)="login()",
-                    placeholder="비밀번호 입력",
-                    class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-[13px] text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none")
+        div(class="story-content")
+            span(class="eyebrow eyebrow-light")
+                span(class="eyebrow-dot")
+                | AI 논문 영상화 플랫폼
+            h1
+                | 어려운 논문을,
+                br
+                | 이해되는 영상으로.
+            p(class="story-lead") 논문 분석부터 대본과 영상 제작까지, 복잡한 연구를 누구나 이해할 수 있는 콘텐츠로 바꿔보세요.
 
-            button(
-                (click)="login()",
-                class="flex w-full justify-center rounded-lg bg-indigo-600 px-3 py-2.5 text-[13px] font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors")
-                | 로그인
+            ol(class="process-list", aria-label="논문변환기 작업 과정")
+                li(class="process-item")
+                    span(class="process-number") 01
+                    div
+                        strong 논문을 정확하게 분석
+                        p 핵심 주장과 근거 출처를 빠짐없이 정리합니다.
+                li(class="process-item")
+                    span(class="process-number") 02
+                    div
+                        strong 시청자에 맞춘 대본 생성
+                        p 난이도와 분위기를 조절해 장면별로 구성합니다.
+                li(class="process-item")
+                    span(class="process-number") 03
+                    div
+                        strong 검토 가능한 영상 제작
+                        p 공유 전 제작자가 직접 확인하고 승인합니다.
 
-        p(class="mt-8 text-center text-xs text-gray-400") &copy; 2026 Sample Service. All rights reserved.
+        div(class="story-proof")
+            div(class="proof-icons", aria-hidden="true")
+                span
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
+                        path(d="M12 3 5 6v5c0 4.4 2.98 8.5 7 9.5 4.02-1 7-5.1 7-9.5V6l-7-3Z", stroke="currentColor", stroke-width="1.8")
+                        path(d="m9 12 2 2 4-4", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
+                span
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
+                        path(d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v10H5V10Z", stroke="currentColor", stroke-width="1.8")
+                        path(d="M12 14v2", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
+            p 동의한 데이터만 품질 개선에 사용하며, 비공개 프로젝트와 원문 저작권을 보호합니다.
+
+    section(class="form-panel")
+        a(class="mobile-brand", href="/access", aria-label="논문변환기 로그인")
+            span(class="mobile-brand-mark")
+                svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 32 32", fill="none", aria-hidden="true")
+                    path(d="M8.5 6.5h10.25a4.75 4.75 0 0 1 4.75 4.75v14.25H13.25A4.75 4.75 0 0 1 8.5 20.75V6.5Z", stroke="currentColor", stroke-width="2")
+                    path(d="M13 10.5h6M13 14.5h6M13 18.5h3.5", stroke="currentColor", stroke-width="2", stroke-linecap="round")
+                    path(d="m21.5 4.75.65 1.72a3.1 3.1 0 0 0 1.82 1.82l1.78.67-1.78.67a3.1 3.1 0 0 0-1.82 1.82l-.65 1.72-.66-1.72a3.1 3.1 0 0 0-1.82-1.82l-1.77-.67 1.77-.67a3.1 3.1 0 0 0 1.82-1.82l.66-1.72Z", fill="currentColor", stroke="none")
+            strong 논문변환기
+
+        div(class="auth-card")
+            ng-container([ngSwitch]="view")
+                ng-container(*ngSwitchCase="'login'")
+                    div(class="card-heading")
+                        span(class="eyebrow")
+                            span(class="eyebrow-dot")
+                            | 안전한 연구 워크스페이스
+                        h2 다시 만나서 반가워요
+                        p 논문을 영상으로 바꾸는 작업을 이어가세요.
+
+                    button(type="button", class="demo-account", (click)="fillDemoAccount()", aria-label="관리자 시연 계정 자동 입력")
+                        span(class="demo-icon")
+                            svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                path(d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z", stroke="currentColor", stroke-width="1.8")
+                                path(d="M5 21a7 7 0 0 1 14 0", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
+                                path(d="m17.5 4 .6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6.6-1.4Z", fill="currentColor")
+                        span(class="demo-copy")
+                            strong 관리자 시연 계정
+                            small
+                                | 아이디
+                                b admin
+                                | · 비밀번호
+                                b 1234
+                        span(class="demo-action") 자동 입력
+
+                    form(class="auth-form", (ngSubmit)="login()", novalidate="")
+                        div(class="field-group")
+                            label(for="login-identifier") 아이디
+                            div(class="input-wrap", [class.has-error]="fieldErrors.identifier")
+                                span(class="input-icon", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
+                                        path(d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM5 21a7 7 0 0 1 14 0", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
+                                input#login-identifier(type="text", name="identifier", autocomplete="username", [(ngModel)]="data.identifier", placeholder="아이디를 입력하세요", [attr.aria-invalid]="fieldErrors.identifier ? 'true' : null", [attr.aria-describedby]="fieldErrors.identifier ? 'identifier-error' : null")
+                            p#identifier-error(class="field-error", *ngIf="fieldErrors.identifier") {{fieldErrors.identifier}}
+
+                        div(class="field-group")
+                            div(class="label-row")
+                                label(for="login-password") 비밀번호
+                                button(type="button", class="text-button", (click)="openRecovery('password')") 비밀번호 찾기
+                            div(class="input-wrap", [class.has-error]="fieldErrors.password")
+                                span(class="input-icon", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
+                                        path(d="M7 10V8a5 5 0 0 1 10 0v2M5 10h14v10H5V10Z", stroke="currentColor", stroke-width="1.8")
+                                input#login-password([type]="passwordVisible ? 'text' : 'password'", name="password", autocomplete="current-password", [(ngModel)]="data.password", placeholder="비밀번호를 입력하세요", [attr.aria-invalid]="fieldErrors.password ? 'true' : null", [attr.aria-describedby]="fieldErrors.password ? 'password-error' : null")
+                                button(type="button", class="visibility-button", (click)="togglePassword()", [attr.aria-pressed]="passwordVisible", [attr.aria-label]="passwordVisible ? '비밀번호 숨기기' : '비밀번호 표시'")
+                                    svg(*ngIf="!passwordVisible", xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                        path(d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z", stroke="currentColor", stroke-width="1.8")
+                                        circle(cx="12", cy="12", r="2.5", stroke="currentColor", stroke-width="1.8")
+                                    svg(*ngIf="passwordVisible", xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                        path(d="m4 4 16 16M10.4 6.2A9.9 9.9 0 0 1 12 6c6 0 9.5 6 9.5 6a17.4 17.4 0 0 1-2.2 2.8M6.2 7.5C3.8 9.3 2.5 12 2.5 12s3.5 6 9.5 6c1 0 1.9-.2 2.7-.4M9.8 9.8a3.1 3.1 0 0 0 4.4 4.4", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
+                            p#password-error(class="field-error", *ngIf="fieldErrors.password") {{fieldErrors.password}}
+
+                        div(class="form-options")
+                            label(class="check-label", for="remember-login")
+                                input#remember-login(type="checkbox", name="remember", [(ngModel)]="data.remember")
+                                span(class="custom-check", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 16 16", fill="none")
+                                        path(d="m3.5 8 3 3 6-6", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
+                                | 로그인 상태 유지
+                            button(type="button", class="text-button", (click)="openRecovery('id')") 아이디 찾기
+
+                        div#login-error(class="message-box error-message", *ngIf="errorMessage", role="alert", aria-live="assertive")
+                            svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                path(d="M12 8v4m0 4h.01M10.3 3.5 2.7 17a2 2 0 0 0 1.75 3h15.1a2 2 0 0 0 1.75-3L13.7 3.5a2 2 0 0 0-3.4 0Z", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
+                            span {{errorMessage}}
+
+                        button(type="submit", class="primary-button", [disabled]="loginLoading")
+                            svg(*ngIf="loginLoading", class="spinner", xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                circle(cx="12", cy="12", r="9", stroke="currentColor", stroke-width="3", opacity=".25")
+                                path(d="M21 12a9 9 0 0 0-9-9", stroke="currentColor", stroke-width="3", stroke-linecap="round")
+                            span {{loginLoading ? '로그인 중...' : '로그인'}}
+
+                    div(class="divider")
+                        span 또는
+
+                    button(type="button", class="secondary-button", (click)="go('register')")
+                        | 처음 오셨나요? 회원가입
+                        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
+                            path(d="m7 4 6 6-6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
+
+                    p(class="security-note")
+                        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
+                            path(d="M10 2.5 4 5v4c0 3.5 2.4 6.8 6 8 3.6-1.2 6-4.5 6-8V5l-6-2.5Z", stroke="currentColor", stroke-width="1.5")
+                            path(d="m7.5 9.5 1.6 1.6 3.5-3.6", stroke="currentColor", stroke-width="1.5", stroke-linecap="round", stroke-linejoin="round")
+                        | 시연 계정 외 인증정보는 서버에서 안전하게 검증하며 브라우저 코드에 저장하지 않습니다.
+
+                ng-container(*ngSwitchCase="'register'")
+                    button(type="button", class="back-button", (click)="go('login')")
+                        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
+                            path(d="m12.5 4-6 6 6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
+                        | 로그인으로 돌아가기
+                    div(class="card-heading compact")
+                        span(class="eyebrow")
+                            span(class="eyebrow-dot")
+                            | 새 연구 여정 시작
+                        h2 회원가입
+                        p 기본 정보를 입력하고 데이터 활용 범위를 직접 선택하세요.
+
+                    form(class="auth-form register-form", (ngSubmit)="register()", novalidate="")
+                        div(class="field-grid")
+                            div(class="field-group")
+                                label(for="register-id") 아이디
+                                div(class="input-wrap")
+                                    input#register-id(type="text", name="registerId", autocomplete="username", [(ngModel)]="registerData.identifier", placeholder="영문·숫자 4자 이상")
+                            div(class="field-group")
+                                label(for="register-nickname") 닉네임
+                                div(class="input-wrap")
+                                    input#register-nickname(type="text", name="nickname", autocomplete="nickname", [(ngModel)]="registerData.nickname", placeholder="표시할 이름")
+                        div(class="field-group")
+                            label(for="register-email") 이메일
+                            div(class="input-wrap")
+                                input#register-email(type="email", name="registerEmail", autocomplete="email", [(ngModel)]="registerData.email", placeholder="name@example.com")
+                        div(class="field-grid")
+                            div(class="field-group")
+                                label(for="register-password") 비밀번호
+                                div(class="input-wrap")
+                                    input#register-password([type]="registerPasswordVisible ? 'text' : 'password'", name="registerPassword", autocomplete="new-password", [(ngModel)]="registerData.password", placeholder="8자 이상")
+                            div(class="field-group")
+                                label(for="register-password-confirm") 비밀번호 확인
+                                div(class="input-wrap")
+                                    input#register-password-confirm([type]="registerPasswordVisible ? 'text' : 'password'", name="registerPasswordConfirm", autocomplete="new-password", [(ngModel)]="registerData.passwordConfirm", placeholder="한 번 더 입력")
+                        button(type="button", class="password-toggle-row", (click)="toggleRegisterPassword()", [attr.aria-pressed]="registerPasswordVisible")
+                            | {{registerPasswordVisible ? '비밀번호 숨기기' : '비밀번호 표시'}}
+
+                        div(class="agreement-list")
+                            label(class="agreement-item", for="terms-agree")
+                                input#terms-agree(type="checkbox", name="terms", [(ngModel)]="registerData.terms")
+                                span(class="custom-check", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 16 16", fill="none")
+                                        path(d="m3.5 8 3 3 6-6", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
+                                span
+                                    b [필수]
+                                    | 이용약관 동의
+                            label(class="agreement-item", for="privacy-agree")
+                                input#privacy-agree(type="checkbox", name="privacy", [(ngModel)]="registerData.privacy")
+                                span(class="custom-check", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 16 16", fill="none")
+                                        path(d="m3.5 8 3 3 6-6", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
+                                span
+                                    b [필수]
+                                    | 개인정보 수집 동의
+                            label(class="agreement-item", for="improvement-agree")
+                                input#improvement-agree(type="checkbox", name="improvement", [(ngModel)]="registerData.improvement")
+                                span(class="custom-check", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 16 16", fill="none")
+                                        path(d="m3.5 8 3 3 6-6", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
+                                span
+                                    b(class="optional") [선택]
+                                    | 결과 및 피드백의 서비스 품질 개선 활용 동의
+                                small 동의하지 않아도 가입할 수 있으며 언제든 철회할 수 있습니다.
+
+                        div(class="message-box error-message", *ngIf="registerError", role="alert") {{registerError}}
+                        button(type="submit", class="primary-button") 회원가입 완료
+
+                ng-container(*ngSwitchCase="'recover'")
+                    button(type="button", class="back-button", (click)="go('login')")
+                        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
+                            path(d="m12.5 4-6 6 6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
+                        | 로그인으로 돌아가기
+                    div(class="card-heading compact")
+                        span(class="eyebrow")
+                            span(class="eyebrow-dot")
+                            | 이메일 인증
+                        h2 계정 정보 찾기
+                        p 가입할 때 사용한 이메일로 인증 안내를 보내드려요.
+
+                    div(class="tab-list", role="tablist", aria-label="계정 찾기 유형")
+                        button(type="button", role="tab", [class.active]="recoverMode === 'id'", [attr.aria-selected]="recoverMode === 'id'", (click)="setRecoveryMode('id')") 아이디 찾기
+                        button(type="button", role="tab", [class.active]="recoverMode === 'password'", [attr.aria-selected]="recoverMode === 'password'", (click)="setRecoveryMode('password')") 비밀번호 찾기
+
+                    form(class="auth-form", (ngSubmit)="submitRecovery()", novalidate="")
+                        div(class="field-group", *ngIf="recoverMode === 'password'")
+                            label(for="recover-id") 아이디
+                            div(class="input-wrap")
+                                input#recover-id(type="text", name="recoverId", autocomplete="username", [(ngModel)]="recoveryData.identifier", placeholder="아이디를 입력하세요")
+                        div(class="field-group")
+                            label(for="recover-email") 가입 이메일
+                            div(class="input-wrap")
+                                span(class="input-icon", aria-hidden="true")
+                                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
+                                        path(d="M4 6h16v12H4V6Zm0 1 8 6 8-6", stroke="currentColor", stroke-width="1.8", stroke-linejoin="round")
+                                input#recover-email(type="email", name="recoverEmail", autocomplete="email", [(ngModel)]="recoveryData.email", placeholder="name@example.com")
+                        div(class="message-box error-message", *ngIf="recoveryError", role="alert") {{recoveryError}}
+                        div(class="message-box success-message", *ngIf="recoverySent", role="status")
+                            svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                path(d="m5 12 4 4L19 6", stroke="currentColor", stroke-width="2", stroke-linecap="round", stroke-linejoin="round")
+                            span 입력한 이메일로 인증 안내를 전송했습니다. (프로토타입)
+                        button(type="submit", class="primary-button") 이메일 인증 요청
+
+        footer(class="legal-footer")
+            span © 2026 논문변환기
+            nav(aria-label="법적 고지")
+                a(href="#", (click)="showLegal('privacy'); $event.preventDefault()") 개인정보처리방침
+                a(href="#", (click)="showLegal('terms'); $event.preventDefault()") 이용약관
+                a(href="#", (click)="showLegal('copyright'); $event.preventDefault()") 저작권 안내
