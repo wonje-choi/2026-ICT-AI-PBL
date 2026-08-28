@@ -1,0 +1,18 @@
+{
+    "name": "논문변환기",
+    "short_name": "논문변환기",
+    "description": "논문을 이해하기 쉬운 영상 콘텐츠로 변환하는 AI 플랫폼",
+    "lang": "ko",
+    "start_url": "/access",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0a2348",
+    "icons": [
+        {
+            "src": "/assets/brand/icon.ico",
+            "sizes": "any",
+            "type": "image/x-icon"
+        }
+    ]
+}
