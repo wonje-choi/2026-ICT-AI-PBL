@@ -5,3 +5,4 @@
 | 2026-08-26 | 002 | 논문변환기 초기 접근 페이지 및 관리자 데모 로그인 구현 | [상세](devlog/2026-08-26/002-paper-converter-access-page.md) |
 | 2026-08-28 | 001 | 대상 GitHub 저장소 main 직접 게시 | [상세](devlog/2026-08-28/001-github-branch-publish.md) |
 | 2026-08-28 | 002 | 웹 앱 manifest JSON 파싱 오류 수정 | [상세](devlog/2026-08-28/002-manifest-json-fix.md) |
+| 2026-08-30 | 001 | 대시보드 overview API 500 및 Promise rejection 오류 수정 | [상세](devlog/2026-08-30/001-dashboard-overview-500-fix.md) |

@@ -18,13 +18,21 @@ export class Component implements OnInit {
         this.loading = true;
         await this.service.render();
 
-        const { code, data } = await wiz.call("overview");
-        if (code === 200) {
-            this.stats = data.stats || [];
-            this.recentItems = data.recent || [];
-        }
+        try {
+            const { code, data } = await wiz.call("overview");
+            if (code !== 200) {
+                throw new Error("대시보드 API 응답 오류");
+            }
 
-        this.loading = false;
-        await this.service.render();
+            this.stats = (data && data.stats) || [];
+            this.recentItems = (data && data.recent) || [];
+        } catch (error) {
+            this.stats = [];
+            this.recentItems = [];
+            console.error("대시보드 조회 실패", error);
+        } finally {
+            this.loading = false;
+            await this.service.render();
+        }
     }
 }
