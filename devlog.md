@@ -6,3 +6,4 @@
 | 2026-08-28 | 001 | 대상 GitHub 저장소 main 직접 게시 | [상세](devlog/2026-08-28/001-github-branch-publish.md) |
 | 2026-08-28 | 002 | 웹 앱 manifest JSON 파싱 오류 수정 | [상세](devlog/2026-08-28/002-manifest-json-fix.md) |
 | 2026-08-30 | 001 | 대시보드 overview API 500 및 Promise rejection 오류 수정 | [상세](devlog/2026-08-30/001-dashboard-overview-500-fix.md) |
+| 2026-08-31 | 001 | 논문 영상화 허가 정책 및 대본 면책 안내 반영 | [상세](devlog/2026-08-31/001-paper-permission-policy.md) |

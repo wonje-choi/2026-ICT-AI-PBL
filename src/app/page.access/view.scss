@@ -219,6 +219,17 @@
     backdrop-filter: blur(10px);
 }
 
+.process-warning {
+    border-color: rgba(251, 191, 36, .3);
+    background: rgba(251, 191, 36, .08);
+}
+
+.process-warning .process-number {
+    color: #fde68a;
+    border-color: rgba(253, 230, 138, .42);
+    background: #4b3a18;
+}
+
 .process-number {
     z-index: 1;
     display: grid;
