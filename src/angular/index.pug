@@ -32,7 +32,40 @@ html(lang="en")
 
         script(type="text/javascript").
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js', {scope: '/'}).then((reg) => {});
+                const cleanupKey = 'season-sw-cleanup-v1';
+
+                void (async () => {
+                    try {
+                        const hadController = Boolean(navigator.serviceWorker.controller);
+                        const registrations = await navigator.serviceWorker.getRegistrations();
+
+                        if (!hadController && registrations.length === 0) {
+                            sessionStorage.removeItem(cleanupKey);
+                            return;
+                        }
+
+                        await Promise.allSettled(registrations.map((registration) => registration.unregister()));
+
+                        if ('caches' in window) {
+                            try {
+                                const cacheNames = await caches.keys();
+                                await Promise.allSettled(cacheNames.map((cacheName) => caches.delete(cacheName)));
+                            } catch (error) {
+                                console.warn('Cache Storage 정리에 실패했습니다.', error);
+                            }
+                        }
+
+                        if (hadController && sessionStorage.getItem(cleanupKey) !== 'done') {
+                            sessionStorage.setItem(cleanupKey, 'done');
+                            window.location.reload();
+                            return;
+                        }
+
+                        sessionStorage.removeItem(cleanupKey);
+                    } catch (error) {
+                        console.warn('Service Worker 정리에 실패했습니다.', error);
+                    }
+                })();
             }
 
     body

@@ -7,3 +7,4 @@
 | 2026-08-28 | 002 | 웹 앱 manifest JSON 파싱 오류 수정 | [상세](devlog/2026-08-28/002-manifest-json-fix.md) |
 | 2026-08-30 | 001 | 대시보드 overview API 500 및 Promise rejection 오류 수정 | [상세](devlog/2026-08-30/001-dashboard-overview-500-fix.md) |
 | 2026-08-31 | 001 | 논문 영상화 허가 정책 및 대본 면책 안내 반영 | [상세](devlog/2026-08-31/001-paper-permission-policy.md) |
+| 2026-09-01 | 001 | main.js 불완전 캐시 로드 오류 방지 | [상세](devlog/2026-09-01/001-main-js-cache-cleanup.md) |
