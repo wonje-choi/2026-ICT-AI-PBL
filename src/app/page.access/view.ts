@@ -7,6 +7,7 @@ export class Component implements OnInit {
     public passwordVisible: boolean = false;
     public registerPasswordVisible: boolean = false;
     public loginLoading: boolean = false;
+    public registerLoading: boolean = false;
     public errorMessage: string = '';
     public registerError: string = '';
     public recoveryError: string = '';
@@ -147,8 +148,8 @@ export class Component implements OnInit {
         const email = String(this.registerData.email || '').trim();
         const password = String(this.registerData.password || '');
 
-        if (identifier.length < 4) {
-            this.registerError = '아이디는 영문 또는 숫자 4자 이상으로 입력해주세요.';
+        if (!/^[a-zA-Z0-9]{4,32}$/.test(identifier)) {
+            this.registerError = '아이디는 영문 또는 숫자 4~32자로 입력해주세요.';
         } else if (!nickname) {
             this.registerError = '닉네임을 입력해주세요.';
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -166,18 +167,54 @@ export class Component implements OnInit {
             return;
         }
 
-        await this.service.modal.show({
-            title: '회원가입 정보 확인',
-            message: '화면 프로토타입에서는 입력 흐름까지만 제공됩니다. 실제 가입 API 연결 시 서버 인증 후 계정이 생성됩니다.',
-            cancel: false,
-            action: '확인',
-            actionBtn: 'success',
-            status: 'success'
-        });
+        this.registerLoading = true;
+        await this.service.render();
 
-        this.data.identifier = identifier;
-        this.data.password = '';
-        await this.go('login');
+        try {
+            const { code, data } = await wiz.call('login', {
+                action: 'register',
+                identifier: identifier,
+                nickname: nickname,
+                email: email,
+                password: password,
+                terms: this.registerData.terms,
+                privacy: this.registerData.privacy,
+                improvement: this.registerData.improvement
+            });
+
+            if (code !== 201 || data?.created !== true) {
+                this.registerError = data?.message || '회원가입에 실패했습니다. 입력 정보를 확인해주세요.';
+                return;
+            }
+
+            await this.service.modal.show({
+                title: '회원가입 완료',
+                message: '계정이 생성되었습니다. 가입한 아이디와 비밀번호로 로그인해주세요.',
+                cancel: false,
+                action: '로그인하기',
+                actionBtn: 'success',
+                status: 'success'
+            });
+
+            this.data.identifier = String(data?.identifier || identifier);
+            this.data.password = '';
+            this.registerData = {
+                identifier: '',
+                email: '',
+                password: '',
+                passwordConfirm: '',
+                nickname: '',
+                terms: false,
+                privacy: false,
+                improvement: false
+            };
+            await this.go('login');
+        } catch (e) {
+            this.registerError = '회원가입 요청을 처리하지 못했습니다. 잠시 후 다시 시도해주세요.';
+        } finally {
+            this.registerLoading = false;
+            await this.service.render();
+        }
     }
 
     public async openRecovery(mode: string) {

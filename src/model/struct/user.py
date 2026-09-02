@@ -10,6 +10,7 @@
 # =============================================================================
 
 import datetime
+import re
 import bcrypt
 
 class User:
@@ -31,24 +32,57 @@ class User:
             hashed = hashed.encode('utf-8')
         return bcrypt.checkpw(password, hashed)
 
-    def authenticate(self, email, password):
-        """이메일/비밀번호 인증
+    def authenticate(self, identifier, password):
+        """아이디 또는 이메일과 비밀번호로 사용자를 인증합니다."""
+        identifier = str(identifier or '').strip()
+        if not identifier or not password:
+            return None
 
-        Args:
-            email: 이메일
-            password: 평문 비밀번호
-
-        Returns:
-            dict (사용자 정보) 또는 None (인증 실패)
-        """
-        user = self.db.get(email=email)
+        user = self.db.get(id=identifier.lower())
+        if user is None:
+            user = self.db.get(email=identifier.lower())
         if user is None:
             return None
-        if not self._check_password(password, user.get('password', '')):
+
+        try:
+            authenticated = self._check_password(password, user.get('password', ''))
+        except (TypeError, ValueError):
             return None
-        # 비밀번호 필드 제거 후 반환
+        if authenticated is False:
+            return None
+
         user.pop('password', None)
         return user
+
+    def register(self, identifier, email, password, name):
+        """회원가입 입력을 검증하고 로그인 가능한 사용자 계정을 생성합니다."""
+        identifier = str(identifier or '').strip().lower()
+        email = str(email or '').strip().lower()
+        password = str(password or '')
+        name = str(name or '').strip()
+
+        if re.fullmatch(r'[a-z0-9]{4,32}', identifier) is None:
+            raise ValueError("아이디는 영문 또는 숫자 4~32자로 입력해주세요.")
+        if len(email) > 128 or re.fullmatch(r'[^\s@]+@[^\s@]+\.[^\s@]+', email) is None:
+            raise ValueError("올바른 이메일 주소를 입력해주세요.")
+        if not name or len(name) > 50:
+            raise ValueError("닉네임은 1~50자로 입력해주세요.")
+        if len(password) < 8 or len(password.encode('utf-8')) > 72:
+            raise ValueError("비밀번호는 8자 이상, UTF-8 기준 72바이트 이하로 입력해주세요.")
+
+        if self.db.get(id=identifier) is not None:
+            raise ValueError("이미 사용 중인 아이디입니다.")
+        if self.db.get(email=email) is not None:
+            raise ValueError("이미 가입된 이메일입니다.")
+
+        self.create(dict(
+            id=identifier,
+            email=email,
+            password=password,
+            name=name,
+            role="user"
+        ))
+        return identifier
 
     def get(self, id=None):
         """사용자 단건 조회 (비밀번호 제외)

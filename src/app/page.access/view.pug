@@ -217,7 +217,11 @@ main(class="auth-shell")
                                 small 동의하지 않아도 가입할 수 있으며 언제든 철회할 수 있습니다.
 
                         div(class="message-box error-message", *ngIf="registerError", role="alert") {{registerError}}
-                        button(type="submit", class="primary-button") 회원가입 완료
+                        button(type="submit", class="primary-button", [disabled]="registerLoading")
+                            svg(*ngIf="registerLoading", class="spinner", xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
+                                circle(cx="12", cy="12", r="9", stroke="currentColor", stroke-width="3", opacity=".25")
+                                path(d="M21 12a9 9 0 0 0-9-9", stroke="currentColor", stroke-width="3", stroke-linecap="round")
+                            span {{registerLoading ? '가입 처리 중...' : '회원가입 완료'}}
 
                 ng-container(*ngSwitchCase="'recover'")
                     button(type="button", class="back-button", (click)="go('login')")

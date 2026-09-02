@@ -25,7 +25,45 @@ def _is_demo_admin(identifier, password):
     return hmac.compare_digest(password_hash, _DEMO_ADMIN_PASSWORD_HASH)
 
 
+
+def _register_account():
+    identifier = wiz.request.query("identifier", "").strip()
+    email = wiz.request.query("email", "").strip()
+    password = wiz.request.query("password", "")
+    name = wiz.request.query("nickname", "").strip()
+    terms = wiz.request.query("terms", "false").lower() == "true"
+    privacy = wiz.request.query("privacy", "false").lower() == "true"
+
+    if terms is False or privacy is False:
+        wiz.response.status(
+            400,
+            created=False,
+            message="이용약관과 개인정보 수집 동의는 필수입니다."
+        )
+
+    try:
+        user_id = struct.user.register(identifier, email, password, name)
+    except ValueError as e:
+        wiz.response.status(400, created=False, message=str(e))
+    except Exception:
+        wiz.response.status(
+            500,
+            created=False,
+            message="회원가입 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+        )
+
+    wiz.response.status(
+        201,
+        created=True,
+        identifier=user_id,
+        message="회원가입이 완료되었습니다."
+    )
+
+
 def login():
+    if wiz.request.query("action", "login") == "register":
+        _register_account()
+
     identifier = wiz.request.query("identifier", "").strip()
     password = wiz.request.query("password", "")
     remember = wiz.request.query("remember", "false") == "true"
@@ -81,3 +119,7 @@ def login():
         redirect=redirect,
         demo=False
     )
+
+
+def register():
+    _register_account()
