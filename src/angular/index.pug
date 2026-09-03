@@ -17,6 +17,22 @@ html(lang="en")
         meta(name='mobile-web-app-capable' content='yes')
         meta(name='HandheldFriendly' content='True')
         meta(name='MobileOptimized' content='320')
+
+        // Chrome DevTools Live Metrics가 주입한 web-vitals 코드의 알려진 예외만 차단합니다.
+        script(type="text/javascript").
+            window.addEventListener('error', function (event) {
+                const message = String(event.message || (event.error && event.error.message) || '');
+                const stack = String((event.error && event.error.stack) || '');
+                const isDevToolsWebVitalsError =
+                    message.includes("Cannot read properties of undefined (reading 'startTime')") &&
+                    stack.includes('reportAllChanges');
+
+                if (isDevToolsWebVitalsError) {
+                    event.preventDefault();
+                    event.stopImmediatePropagation();
+                }
+            }, true);
+
         link(rel="shortcut icon", href="/assets/brand/icon.ico")
 
         link(rel="apple-touch-icon" sizes="72x72" href="/assets/brand/icon.ico")

@@ -10,3 +10,5 @@
 | 2026-09-01 | 001 | main.js 불완전 캐시 로드 오류 방지 | [상세](devlog/2026-09-01/001-main-js-cache-cleanup.md) |
 | 2026-09-02 | 001 | 회원가입 계정 저장 및 아이디·이메일 로그인 오류 수정 | [상세](devlog/2026-09-02/001-registration-login-fix.md) |
 | 2026-09-02 | 002 | 회원가입·로그인 오류 수정분 GitHub main 게시 | [상세](devlog/2026-09-02/002-registration-login-git-push.md) |
+| 2026-09-03 | 001 | Chrome DevTools Web Vitals 반복 예외 호환 처리 | [상세](devlog/2026-09-03/001-devtools-web-vitals-error-guard.md) |
+| 2026-09-03 | 002 | Chrome DevTools Web Vitals 오류 수정분 GitHub main 게시 | [상세](devlog/2026-09-03/002-devtools-web-vitals-git-push.md) |
