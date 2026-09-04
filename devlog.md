@@ -12,3 +12,5 @@
 | 2026-09-02 | 002 | 회원가입·로그인 오류 수정분 GitHub main 게시 | [상세](devlog/2026-09-02/002-registration-login-git-push.md) |
 | 2026-09-03 | 001 | Chrome DevTools Web Vitals 반복 예외 호환 처리 | [상세](devlog/2026-09-03/001-devtools-web-vitals-error-guard.md) |
 | 2026-09-03 | 002 | Chrome DevTools Web Vitals 오류 수정분 GitHub main 게시 | [상세](devlog/2026-09-03/002-devtools-web-vitals-git-push.md) |
+| 2026-09-04 | 001 | 관리자·일반 회원 권한 분리 및 논문 대본 중심 메인 화면 개편 | [상세](devlog/2026-09-04/001-role-separation-paper-script-home.md) |
+| 2026-09-04 | 002 | 권한 분리 및 논문 대본 메인 화면 변경분 GitHub main 게시 | [상세](devlog/2026-09-04/002-role-script-home-git-push.md) |

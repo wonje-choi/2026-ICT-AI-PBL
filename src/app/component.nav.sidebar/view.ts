@@ -14,6 +14,14 @@ export class Component implements OnInit {
         this.service.status.toggle('navbar', true);
     }
 
+    public isAdmin() {
+        return this.service.auth.check.role('admin');
+    }
+
+    public roleLabel() {
+        return this.isAdmin() ? '관리자' : '일반 회원';
+    }
+
     public isActive(link: string) {
         return location.pathname.indexOf(link) === 0
     }

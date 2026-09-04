@@ -1,12 +1,18 @@
 struct = wiz.model("struct")
 
+ALLOWED_ROLES = ["admin", "user"]
+
+
 def list():
     text = wiz.request.query("text", "")
-    role = wiz.request.query("role", "")
+    requested_role = wiz.request.query("role", "")
+    role = requested_role if requested_role in ALLOWED_ROLES else ""
 
-    members = struct.user.list(text=text, role=role)
+    query_role = "" if requested_role == "user" else role
+    members = struct.user.list(text=text, role=query_role)
+    if requested_role == "user":
+        members = [member for member in members if member.get("role") != "admin"]
 
-    # 아바타 컬러 추가
     colors = [
         "bg-indigo-100 text-indigo-700",
         "bg-pink-100 text-pink-700",
@@ -15,25 +21,27 @@ def list():
         "bg-cyan-100 text-cyan-700",
         "bg-violet-100 text-violet-700",
     ]
-    for i, m in enumerate(members):
-        m["avatarColor"] = colors[i % len(colors)]
-        m["joined"] = str(m.get("created", ""))[:10]
+    for i, member in enumerate(members):
+        member["avatarColor"] = colors[i % len(colors)]
+        member["joined"] = str(member.get("created", ""))[:10]
+        member["role"] = "admin" if member.get("role") == "admin" else "user"
 
     wiz.response.status(200, members)
 
+
 def invite():
-    email = wiz.request.query("email", "")
-    role = wiz.request.query("role", "viewer")
+    email = wiz.request.query("email", "").strip().lower()
+    role = wiz.request.query("role", "user").strip()
 
     if not email:
         wiz.response.status(400, message="이메일을 입력해주세요.")
+    if role not in ALLOWED_ROLES:
+        wiz.response.status(400, message="허용되지 않은 역할입니다.")
 
-    # 이미 존재하는지 확인
     existing = struct.user.db.get(email=email)
     if existing:
         wiz.response.status(400, message="이미 등록된 사용자입니다.")
 
-    # 기본 비밀번호로 사용자 생성
     struct.user.create(dict(
         email=email,
         password="welcome1",
@@ -43,10 +51,17 @@ def invite():
 
     wiz.response.status(200)
 
-def remove():
-    id = wiz.request.query("id", "")
-    if not id:
-        wiz.response.status(400, message="ID가 필요합니다.")
 
-    struct.user.db.delete(id=id)
+def remove():
+    member_id = wiz.request.query("id", "")
+    if not member_id:
+        wiz.response.status(400, message="ID가 필요합니다.")
+    if member_id == wiz.session.get("id"):
+        wiz.response.status(400, message="현재 로그인한 관리자 계정은 제거할 수 없습니다.")
+
+    member = struct.user.get(member_id)
+    if member is None:
+        wiz.response.status(404, message="멤버를 찾을 수 없습니다.")
+
+    struct.user.db.delete(id=member_id)
     wiz.response.status(200)

@@ -61,7 +61,7 @@ export class Component implements OnInit {
     }
 
     private moveToAuthenticatedPage(role: string) {
-        location.href = role === 'admin' ? '/dashboard' : '/';
+        location.href = '/dashboard';
     }
 
     public async go(view: string) {

@@ -16,9 +16,17 @@ nav(class="sticky top-0 z-20 bg-white shadow")
                     span 초대
 
 div(class="max-w-5xl pt-4 px-8 mb-6")
+    div(class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5")
+        div(class="rounded-xl border border-purple-200 bg-purple-50 px-4 py-3")
+            p(class="text-[13px] font-semibold text-purple-900") 관리자
+            p(class="mt-1 text-xs leading-5 text-purple-800") 회원 조회·초대·제거, 역할 지정, 전체 콘텐츠 운영
+        div(class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3")
+            p(class="text-[13px] font-semibold text-blue-900") 일반 회원
+            p(class="mt-1 text-xs leading-5 text-blue-800") 논문 입력, 대본 초안 생성·편집, 본인 프로필 관리
+
     //- Role Filter
     div(class="flex flex-wrap items-center gap-2 mb-4")
-        span(class="text-xs text-gray-400 mr-1") 역할:
+        span(class="text-xs text-gray-400 mr-1") 역할 구분:
         button(
             (click)="filterByRole('')",
             class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium transition-colors",
@@ -26,10 +34,10 @@ div(class="max-w-5xl pt-4 px-8 mb-6")
             | 전체
         button(
             *ngFor="let role of roles",
-            (click)="filterByRole(role)",
+            (click)="filterByRole(role.key)",
             class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium capitalize transition-colors",
-            [ngClass]="search.role === role ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'")
-            | {{role}}
+            [ngClass]="search.role === role.key ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'")
+            | {{role.label}}
 
     //- Members Grid
     ng-container(*ngIf="loading")
@@ -49,7 +57,7 @@ div(class="max-w-5xl pt-4 px-8 mb-6")
                             p(class="text-[11px] text-gray-400 truncate") {{member.email}}
 
                     span(class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium capitalize", [ngClass]="roleClass(member.role)")
-                        | {{member.role}}
+                        | {{roleLabel(member.role)}}
 
                 div(class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between")
                     span(class="text-[11px] text-gray-400") 가입일: {{member.joined}}
@@ -79,13 +87,12 @@ div(*ngIf="showInviteModal", class="fixed inset-0 z-50 flex items-center justify
                 select(
                     [(ngModel)]="inviteData.role",
                     class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-[13px] text-gray-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none")
-                    option(value="viewer") Viewer
-                    option(value="editor") Editor
-                    option(value="admin") Admin
+                    option(value="user") 일반 회원 — 논문 입력·대본 작성
+                    option(value="admin") 관리자 — 회원 및 전체 콘텐츠 운영
 
         div(class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end gap-2")
             button(
-                (click)="showInviteModal = false",
+                (click)="closeInvite()",
                 class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-[13px] font-medium text-gray-700 shadow-sm hover:bg-gray-50") 취소
             button(
                 (click)="invite()",

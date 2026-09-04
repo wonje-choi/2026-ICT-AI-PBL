@@ -111,7 +111,7 @@ def login():
         role=user["role"],
         remember=remember
     )
-    redirect = "/dashboard" if user["role"] == "admin" else "/"
+    redirect = "/dashboard"
     wiz.response.status(
         200,
         authenticated=True,

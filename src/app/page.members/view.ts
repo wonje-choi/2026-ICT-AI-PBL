@@ -10,16 +10,19 @@ export class Component implements OnInit {
         role: ""
     };
 
-    public roles: string[] = ['admin', 'editor', 'viewer'];
+    public roles: any[] = [
+        { key: 'admin', label: '관리자' },
+        { key: 'user', label: '일반 회원' }
+    ];
 
     public showInviteModal: boolean = false;
-    public inviteData: any = { email: '', role: 'viewer' };
+    public inviteData: any = { email: '', role: 'user' };
 
     constructor(public service: Service) { }
 
     public async ngOnInit() {
         await this.service.init();
-        await this.service.auth.allow("/access");
+        await this.service.auth.allow.role("admin", "/dashboard");
         await this.load();
     }
 
@@ -30,6 +33,8 @@ export class Component implements OnInit {
         const { code, data } = await wiz.call("list", this.search);
         if (code === 200) {
             this.members = data || [];
+        } else {
+            this.members = [];
         }
 
         this.loading = false;
@@ -42,8 +47,13 @@ export class Component implements OnInit {
     }
 
     public async openInvite() {
-        this.inviteData = { email: '', role: 'viewer' };
+        this.inviteData = { email: '', role: 'user' };
         this.showInviteModal = true;
+        await this.service.render();
+    }
+
+    public async closeInvite() {
+        this.showInviteModal = false;
         await this.service.render();
     }
 
@@ -55,16 +65,16 @@ export class Component implements OnInit {
 
         const { code, data } = await wiz.call("invite", this.inviteData);
         if (code === 200) {
-            await this.service.modal.success("초대가 완료되었습니다.");
+            await this.service.modal.success("멤버 계정이 생성되었습니다. 초기 비밀번호는 welcome1입니다.");
             this.showInviteModal = false;
             await this.load();
         } else {
-            await this.service.modal.error(data || "초대에 실패했습니다.");
+            await this.service.modal.error(data?.message || data || "초대에 실패했습니다.");
         }
     }
 
     public async removeMember(member: any) {
-        let res = await this.service.modal.show({
+        const res = await this.service.modal.show({
             title: "멤버 제거",
             message: `${member.name}님을 멤버에서 제거하시겠습니까?`,
             action: "제거",
@@ -73,18 +83,21 @@ export class Component implements OnInit {
         });
         if (!res) return;
 
-        const { code } = await wiz.call("remove", { id: member.id });
+        const { code, data } = await wiz.call("remove", { id: member.id });
         if (code === 200) {
             await this.load();
+        } else {
+            await this.service.modal.error(data?.message || data || "멤버를 제거하지 못했습니다.");
         }
     }
 
+    public roleLabel(role: string) {
+        return role === 'admin' ? '관리자' : '일반 회원';
+    }
+
     public roleClass(role: string) {
-        switch (role) {
-            case 'admin': return 'bg-purple-100 text-purple-700';
-            case 'editor': return 'bg-blue-100 text-blue-700';
-            case 'viewer': return 'bg-gray-100 text-gray-600';
-            default: return 'bg-gray-100 text-gray-600';
-        }
+        return role === 'admin'
+            ? 'bg-purple-100 text-purple-700'
+            : 'bg-blue-100 text-blue-700';
     }
 }
