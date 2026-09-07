@@ -81,21 +81,6 @@ main(class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8")
                             p(class="text-[13px] font-semibold") 검토 후 영상 제작
                             p(class="mt-1 text-xs leading-5 text-slate-400") 원문 검수와 저자 허가 승인 후 영상 제작을 진행합니다.
 
-            section(class="bg-white rounded-2xl border border-gray-200 p-6")
-                h2(class="text-[15px] font-semibold text-gray-950") 역할별 가능 작업
-                div(class="mt-4 space-y-4")
-                    div(class="rounded-xl bg-purple-50 p-4")
-                        div(class="flex items-center justify-between")
-                            p(class="text-[13px] font-semibold text-purple-900") 관리자
-                            span(class="text-[11px] font-medium text-purple-700") 운영 권한
-                        p(class="mt-2 text-xs leading-5 text-purple-800") 회원 목록 조회·초대·제거, 역할 관리, 전체 콘텐츠 운영
-                    div(class="rounded-xl bg-blue-50 p-4")
-                        div(class="flex items-center justify-between")
-                            p(class="text-[13px] font-semibold text-blue-900") 일반 회원
-                            span(class="text-[11px] font-medium text-blue-700") 제작 권한
-                        p(class="mt-2 text-xs leading-5 text-blue-800") 논문 입력, 대본 초안 생성·편집, 본인 프로필 관리
-                a(*ngIf="isAdmin()", routerLink="/members", class="mt-4 inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-500") 회원 관리로 이동 →
-
     section(*ngIf="result", class="mt-6 bg-white rounded-2xl border border-indigo-200 shadow-sm overflow-hidden")
         div(class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-6 py-5 border-b border-gray-100")
             div
