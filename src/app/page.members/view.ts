@@ -12,7 +12,7 @@ export class Component implements OnInit {
 
     public roles: any[] = [
         { key: 'admin', label: '관리자' },
-        { key: 'user', label: '일반 회원' }
+        { key: 'user', label: '회원' }
     ];
 
     public showInviteModal: boolean = false;
@@ -92,7 +92,7 @@ export class Component implements OnInit {
     }
 
     public roleLabel(role: string) {
-        return role === 'admin' ? '관리자' : '일반 회원';
+        return role === 'admin' ? '관리자' : '회원';
     }
 
     public roleClass(role: string) {

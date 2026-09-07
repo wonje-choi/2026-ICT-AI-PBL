@@ -21,7 +21,7 @@ div(class="max-w-5xl pt-4 px-8 mb-6")
             p(class="text-[13px] font-semibold text-purple-900") 관리자
             p(class="mt-1 text-xs leading-5 text-purple-800") 회원 조회·초대·제거, 역할 지정, 전체 콘텐츠 운영
         div(class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3")
-            p(class="text-[13px] font-semibold text-blue-900") 일반 회원
+            p(class="text-[13px] font-semibold text-blue-900") 회원
             p(class="mt-1 text-xs leading-5 text-blue-800") 논문 입력, 대본 초안 생성·편집, 본인 프로필 관리
 
     //- Role Filter
@@ -87,7 +87,7 @@ div(*ngIf="showInviteModal", class="fixed inset-0 z-50 flex items-center justify
                 select(
                     [(ngModel)]="inviteData.role",
                     class="block w-full rounded-lg border border-gray-300 px-3 py-2 text-[13px] text-gray-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none")
-                    option(value="user") 일반 회원 — 논문 입력·대본 작성
+                    option(value="user") 회원 — 논문 입력·대본 작성
                     option(value="admin") 관리자 — 회원 및 전체 콘텐츠 운영
 
         div(class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end gap-2")

@@ -19,7 +19,7 @@ export class Component implements OnInit {
     }
 
     public roleLabel() {
-        return this.isAdmin() ? '관리자' : '일반 회원';
+        return this.isAdmin() ? '관리자' : '회원';
     }
 
     public isActive(link: string) {

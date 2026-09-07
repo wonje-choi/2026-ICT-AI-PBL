@@ -16,3 +16,5 @@
 | 2026-09-04 | 002 | 권한 분리 및 논문 대본 메인 화면 변경분 GitHub main 게시 | [상세](devlog/2026-09-04/002-role-script-home-git-push.md) |
 | 2026-09-07 | 001 | 메인 대시보드 역할별 가능 작업 안내 보드 제거 | [상세](devlog/2026-09-07/001-remove-role-capability-board.md) |
 | 2026-09-07 | 002 | 대시보드 역할 안내 보드 제거 변경분 GitHub main 게시 | [상세](devlog/2026-09-07/002-role-board-removal-git-push.md) |
+| 2026-09-07 | 003 | 일반 회원 역할 표시명을 회원으로 변경 | [상세](devlog/2026-09-07/003-member-role-label.md) |
+| 2026-09-07 | 004 | 회원 역할 표시명 변경분 GitHub main 게시 | [상세](devlog/2026-09-07/004-member-role-label-git-push.md) |
