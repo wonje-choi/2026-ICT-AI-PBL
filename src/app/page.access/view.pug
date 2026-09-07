@@ -1,94 +1,109 @@
 main(class="auth-shell")
-    section(class="story-panel")
-        div(class="story-orb story-orb-one")
-        div(class="story-orb story-orb-two")
+    section(class="visual-panel")
+        div(class="visual-grid", aria-hidden="true")
         header(class="brand-lockup")
             div(class="brand-mark")
                 svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 32 32", fill="none", aria-hidden="true")
-                    path(d="M8.5 6.5h10.25a4.75 4.75 0 0 1 4.75 4.75v14.25H13.25A4.75 4.75 0 0 1 8.5 20.75V6.5Z", stroke="currentColor", stroke-width="2")
-                    path(d="M13 10.5h6M13 14.5h6M13 18.5h3.5", stroke="currentColor", stroke-width="2", stroke-linecap="round")
-                    path(d="m21.5 4.75.65 1.72a3.1 3.1 0 0 0 1.82 1.82l1.78.67-1.78.67a3.1 3.1 0 0 0-1.82 1.82l-.65 1.72-.66-1.72a3.1 3.1 0 0 0-1.82-1.82l-1.77-.67 1.77-.67a3.1 3.1 0 0 0 1.82-1.82l.66-1.72Z", fill="currentColor", stroke="none")
-            div
+                    path(d="M7 7.5h11.5A4.5 4.5 0 0 1 23 12v12.5H11.5A4.5 4.5 0 0 1 7 20V7.5Z", stroke="currentColor", stroke-width="2")
+                    path(d="m18.5 13 7-4v14l-7-4V13Z", fill="currentColor")
+            div(class="brand-copy")
                 strong 논문변환기
-                span Paper to Video AI
+                span Paper to Video Studio
 
-        div(class="story-content")
-            span(class="eyebrow eyebrow-light")
-                span(class="eyebrow-dot")
-                | AI 논문 영상화 플랫폼
+        div(class="visual-copy")
+            span(class="section-kicker")
+                span(class="live-dot")
+                | RESEARCH / SCRIPT / FILM
             h1
-                | 어려운 논문을,
+                | 논문의 깊이는 그대로,
                 br
-                | 이해되는 영상으로.
-            p(class="story-lead") 논문 분석부터 대본과 영상 제작까지, 복잡한 연구를 누구나 이해할 수 있는 콘텐츠로 바꿔보세요.
+                span 영상의 언어로.
+            p 핵심 근거를 분석하고 장면별 대본으로 설계해, 복잡한 연구를 선명한 영상 콘텐츠로 완성합니다.
 
-            ol(class="process-list", aria-label="논문변환기 작업 과정")
-                li(class="process-item")
-                    span(class="process-number") 01
-                    div
-                        strong 논문을 정확하게 분석
-                        p 핵심 주장과 근거 출처를 빠짐없이 정리합니다.
-                li(class="process-item process-warning")
-                    span(class="process-number") 02
-                    div
-                        strong 저자 허가 전에도 대본 생성
-                        p 대본에는 권리 확인 책임과 법적 면책 경고문이 함께 표시됩니다.
-                li(class="process-item")
-                    span(class="process-number") 03
-                    div
-                        strong 영상화 허가 자료 제출
-                        p 논문 저자의 허가를 확인할 수 있는 사진 또는 한글문서를 제출합니다.
-                li(class="process-item")
-                    span(class="process-number") 04
-                    div
-                        strong 승인 후 영상 제작
-                        p 관리자가 자료를 승인하면 제작할 수 있으며, 향후 AI 검토로 전환될 수 있습니다.
+        div(class="studio-window", aria-label="논문 영상 제작 과정 미리보기")
+            div(class="studio-toolbar")
+                div(class="window-controls", aria-hidden="true")
+                    span
+                    span
+                    span
+                span SCENE 03 / 12
+                span(class="render-state")
+                    i
+                    | Generating
+            div(class="preview-frame")
+                div(class="preview-noise")
+                div(class="paper-plane")
+                    span(class="paper-line paper-line-wide")
+                    span(class="paper-line")
+                    span(class="paper-line paper-line-short")
+                    strong ABSTRACT
+                div(class="spectrum spectrum-one")
+                div(class="spectrum spectrum-two")
+                div(class="play-mark")
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
+                        path(d="m9 7 8 5-8 5V7Z", fill="currentColor")
+                div(class="preview-caption")
+                    small SCENE 03
+                    strong 연구의 핵심 발견을 시각화합니다
+                div(class="frame-time") 00:42
+            div(class="editor-track")
+                div(class="track-label")
+                    span VOICE
+                    span 00:00:42:18
+                div(class="waveform", aria-hidden="true")
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                    i
+                div(class="playhead", aria-hidden="true")
+            div(class="scene-strip", aria-hidden="true")
+                span(class="scene-block scene-block-one")
+                span(class="scene-block scene-block-two")
+                span(class="scene-block scene-block-three")
+                span(class="scene-block scene-block-four")
 
-        div(class="story-proof")
-            div(class="proof-icons", aria-hidden="true")
-                span
-                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
-                        path(d="M12 3 5 6v5c0 4.4 2.98 8.5 7 9.5 4.02-1 7-5.1 7-9.5V6l-7-3Z", stroke="currentColor", stroke-width="1.8")
-                        path(d="m9 12 2 2 4-4", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
-                span
-                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none")
-                        path(d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v10H5V10Z", stroke="currentColor", stroke-width="1.8")
-                        path(d="M12 14v2", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
-            p 대본 이용 전 원저자의 권리와 이용 범위를 직접 확인해야 하며, 무단 이용으로 발생한 법적 책임은 사용자에게 있습니다.
+        footer(class="visual-footer")
+            span 논문 분석
+            i
+            span 대본 설계
+            i
+            span 권리 확인
+            i
+            span 영상 제작
 
     section(class="form-panel")
         a(class="mobile-brand", href="/access", aria-label="논문변환기 로그인")
             span(class="mobile-brand-mark")
                 svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 32 32", fill="none", aria-hidden="true")
-                    path(d="M8.5 6.5h10.25a4.75 4.75 0 0 1 4.75 4.75v14.25H13.25A4.75 4.75 0 0 1 8.5 20.75V6.5Z", stroke="currentColor", stroke-width="2")
-                    path(d="M13 10.5h6M13 14.5h6M13 18.5h3.5", stroke="currentColor", stroke-width="2", stroke-linecap="round")
-                    path(d="m21.5 4.75.65 1.72a3.1 3.1 0 0 0 1.82 1.82l1.78.67-1.78.67a3.1 3.1 0 0 0-1.82 1.82l-.65 1.72-.66-1.72a3.1 3.1 0 0 0-1.82-1.82l-1.77-.67 1.77-.67a3.1 3.1 0 0 0 1.82-1.82l.66-1.72Z", fill="currentColor", stroke="none")
-            strong 논문변환기
+                    path(d="M7 7.5h11.5A4.5 4.5 0 0 1 23 12v12.5H11.5A4.5 4.5 0 0 1 7 20V7.5Z", stroke="currentColor", stroke-width="2")
+                    path(d="m18.5 13 7-4v14l-7-4V13Z", fill="currentColor")
+            span
+                strong 논문변환기
+                small PAPER TO VIDEO
 
         div(class="auth-card")
             ng-container([ngSwitch]="view")
                 ng-container(*ngSwitchCase="'login'")
                     div(class="card-heading")
-                        span(class="eyebrow")
-                            span(class="eyebrow-dot")
-                            | 안전한 연구 워크스페이스
-                        h2 다시 만나서 반가워요
-                        p 논문을 영상으로 바꾸는 작업을 이어가세요.
-
-                    button(type="button", class="demo-account", (click)="fillDemoAccount()", aria-label="관리자 시연 계정 자동 입력")
-                        span(class="demo-icon")
-                            svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 24 24", fill="none", aria-hidden="true")
-                                path(d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z", stroke="currentColor", stroke-width="1.8")
-                                path(d="M5 21a7 7 0 0 1 14 0", stroke="currentColor", stroke-width="1.8", stroke-linecap="round")
-                                path(d="m17.5 4 .6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6.6-1.4Z", fill="currentColor")
-                        span(class="demo-copy")
-                            strong 관리자 시연 계정
-                            small
-                                | 아이디
-                                b admin
-                                | · 비밀번호
-                                b 1234
-                        span(class="demo-action") 자동 입력
+                        span(class="form-kicker") MEMBER ACCESS
+                        h2 작업을 이어가세요
+                        p 논문을 영상으로 바꾸는 크리에이티브 워크스페이스
 
                     form(class="auth-form", (ngSubmit)="login()", novalidate="")
                         div(class="field-group")
@@ -137,19 +152,24 @@ main(class="auth-shell")
                                 path(d="M21 12a9 9 0 0 0-9-9", stroke="currentColor", stroke-width="3", stroke-linecap="round")
                             span {{loginLoading ? '로그인 중...' : '로그인'}}
 
-                    div(class="divider")
-                        span 또는
+                    div(class="account-actions")
+                        span 아직 계정이 없으신가요?
+                        button(type="button", class="text-button strong", (click)="go('register')") 회원가입
 
-                    button(type="button", class="secondary-button", (click)="go('register')")
-                        | 처음 오셨나요? 회원가입
-                        svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
-                            path(d="m7 4 6 6-6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
+                    button(type="button", class="sample-access", (click)="fillDemoAccount()", aria-label="체험 계정 정보 자동 입력")
+                        span(class="sample-icon")
+                            svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
+                                path(d="m7 4 6 6-6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
+                        span
+                            strong 체험 계정으로 둘러보기
+                            small 관리자 계정 정보를 자동으로 입력합니다
+                        em 자동 입력
 
                     p(class="security-note")
                         svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 20 20", fill="none", aria-hidden="true")
                             path(d="M10 2.5 4 5v4c0 3.5 2.4 6.8 6 8 3.6-1.2 6-4.5 6-8V5l-6-2.5Z", stroke="currentColor", stroke-width="1.5")
                             path(d="m7.5 9.5 1.6 1.6 3.5-3.6", stroke="currentColor", stroke-width="1.5", stroke-linecap="round", stroke-linejoin="round")
-                        | 시연 계정 외 인증정보는 서버에서 안전하게 검증하며 브라우저 코드에 저장하지 않습니다.
+                        | 인증 정보는 서버에서 안전하게 검증하며 브라우저 코드에 저장하지 않습니다.
 
                 ng-container(*ngSwitchCase="'register'")
                     button(type="button", class="back-button", (click)="go('login')")
@@ -157,11 +177,9 @@ main(class="auth-shell")
                             path(d="m12.5 4-6 6 6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
                         | 로그인으로 돌아가기
                     div(class="card-heading compact")
-                        span(class="eyebrow")
-                            span(class="eyebrow-dot")
-                            | 새 연구 여정 시작
-                        h2 회원가입
-                        p 기본 정보를 입력하고 데이터 활용 범위를 직접 선택하세요.
+                        span(class="form-kicker") CREATE ACCOUNT
+                        h2 새 계정 만들기
+                        p 기본 정보와 데이터 활용 범위를 직접 설정하세요.
 
                     form(class="auth-form register-form", (ngSubmit)="register()", novalidate="")
                         div(class="field-grid")
@@ -229,9 +247,7 @@ main(class="auth-shell")
                             path(d="m12.5 4-6 6 6 6", stroke="currentColor", stroke-width="1.8", stroke-linecap="round", stroke-linejoin="round")
                         | 로그인으로 돌아가기
                     div(class="card-heading compact")
-                        span(class="eyebrow")
-                            span(class="eyebrow-dot")
-                            | 이메일 인증
+                        span(class="form-kicker") ACCOUNT RECOVERY
                         h2 계정 정보 찾기
                         p 가입할 때 사용한 이메일로 인증 안내를 보내드려요.
 

@@ -18,3 +18,5 @@
 | 2026-09-07 | 002 | 대시보드 역할 안내 보드 제거 변경분 GitHub main 게시 | [상세](devlog/2026-09-07/002-role-board-removal-git-push.md) |
 | 2026-09-07 | 003 | 일반 회원 역할 표시명을 회원으로 변경 | [상세](devlog/2026-09-07/003-member-role-label.md) |
 | 2026-09-07 | 004 | 회원 역할 표시명 변경분 GitHub main 게시 | [상세](devlog/2026-09-07/004-member-role-label-git-push.md) |
+| 2026-09-07 | 005 | 로그인 페이지 시네마틱 모노톤 디자인 개편 | [상세](devlog/2026-09-07/005-access-cinematic-redesign.md) |
+| 2026-09-07 | 006 | 로그인 페이지 디자인 개편 변경분 GitHub main 게시 | [상세](devlog/2026-09-07/006-access-redesign-git-push.md) |
